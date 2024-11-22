@@ -1418,4 +1418,7 @@ def main(page: ft.Page):
     page.on_route_change = lambda _: home_page()
     page.go("/")
 
-ft.app(target=main)
+import os
+port = int(os.environ.get("PORT", 8080))  # O Render fornece a variável PORT
+ft.app(target=main, view="web_browser", host="0.0.0.0", port=port)
+
